@@ -1,0 +1,4 @@
+FROM jenkinsci/jnlp-agent:latest-windows
+USER ContainerAdministrator
+RUN Set-LocalUser -Name 'Jenkins' -PasswordNeverExpires 1
+USER Jenkins

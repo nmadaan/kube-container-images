@@ -1,0 +1,30 @@
+FROM ubuntu:16.04
+
+RUN apt-get update \
+        && apt-get install -y build-essential libssl-dev libffi-dev python-dev \
+                python-pip python-dev gcc phantomjs firefox \
+                xvfb zip wget ca-certificates ntpdate \
+                libnss3-dev libxss1 libappindicator3-1 libindicator7 gconf-service libgconf-2-4 libpango1.0-0 xdg-utils fonts-liberation maven  openjdk-8-jdk\
+        && rm -rf /var/lib/apt/lists/*
+
+RUN wget -q https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz \
+        && tar xvzf geckodriver-*.tar.gz \
+        && rm geckodriver-*.tar.gz \
+        && mv geckodriver /usr/local/bin \
+        && chmod a+x /usr/local/bin/geckodriver
+# install chrome and chromedriver in one run command to clear build caches for new versions (both version need to match)
+RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+        && dpkg -i google-chrome*.deb \
+        && rm google-chrome*.deb \
+    && wget -q https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_linux64.zip \
+        && unzip chromedriver_linux64.zip \
+        && rm chromedriver_linux64.zip \
+        && mv chromedriver /usr/local/bin \
+        && chmod +x /usr/local/bin/chromedriver
+
+RUN apt-get -y install xvfb
+
+# Make sure that Xvfb starts everytime the box/vm is booted:
+echo "Starting X virtual framebuffer (Xvfb) in background..."
+Xvfb -ac :99 -screen 0 1280x1024x16 &
+export DISPLAY=:99

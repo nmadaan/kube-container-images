@@ -1,0 +1,13 @@
+configuration-as-code
+matrix-auth
+ssh-slaves
+kubernetes
+swarm
+git
+workflow-aggregator
+ws-cleanup
+generic-webhook-trigger
+uno-choice
+email-ext
+job-dsl
+robot
