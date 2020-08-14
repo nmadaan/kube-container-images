@@ -1,0 +1,22 @@
+FROM mcr.microsoft.com/dotnet/framework/runtime:4.8-windowsservercore-ltsc2019
+
+RUN echo 'pull down choco'
+RUN powershell -Command Install-PackageProvider -name chocolatey -Force
+RUN powershell -Command Set-PackageSource -Name chocolatey -Trusted
+
+RUN powershell -Command Get-PackageSource
+
+RUN echo 'install chrome via choco'
+RUN powershell -Command Install-Package GoogleChrome
+RUN powershell -Command Install-Package chromedriver
+RUN powershell -Command Install-Package python
+RUN pip install \
+        --no-cache-dir \
+	robotframework\
+	robotframework-databaselibrary\
+	robotframework-faker\
+	robotframework-ftplibrary\
+	robotframework-pabot\
+	robotframework-requests\
+	robotframework-seleniumlibrary\
+	robotframework-selenium2library
