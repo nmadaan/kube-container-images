@@ -1,20 +1,19 @@
-FROM python:3-windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
+RUN powershell -Command Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+ADD Files/FontsToAdd.tar .
+RUN powershell -Command C:\Add-Font.ps1 C:\Fonts
+
+RUN powershell -Command choco install googlechrome -y
+RUN powershell -Command choco install chromedriver -y
+RUN powershell -Command choco install python -y
 RUN pip install \
-        --no-cache-dir \
-	robotframework\
-	robotframework-databaselibrary\
-	robotframework-faker\
-	robotframework-ftplibrary\
-	robotframework-pabot\
-	robotframework-requests\
-	robotframework-seleniumlibrary\
-	robotframework-selenium2library
-
-# install chrome and chromedriver in one run command to clear build caches for new versions (both version need to match)
-RUN iwr  'https://dl.google.com/chrome/install/latest/chrome_installer.exe' -OutFile 'C:\chrome_installer.exe' -UseBasicParsing; \
-         Start-Process -FilePath C:\chrome_installer.exe -Args '/silent /install' -Wait; \
-         Remove-Item C:\chrome_installer.exe;
-        
-RUN iwr 'https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_win32.zip' -OutFile 'C:\chromedriver.zip' -UseBasicParsing; \
-         Expand-Archive C:\chromedriver.zip -DestinationPath C:\webdrivers;
+     --no-cache-dir \
+     robotframework \
+     robotframework-databaselibrary \
+     robotframework-faker \
+     robotframework-ftplibrary \       
+     robotframework-pabot \ 
+     robotframework-requests \ 
+     robotframework-seleniumlibrary \ 
+     robotframework-selenium2library
