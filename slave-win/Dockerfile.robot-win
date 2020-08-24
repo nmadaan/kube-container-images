@@ -4,9 +4,7 @@ RUN powershell -Command Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((
 ADD FontsToAdd.tar .
 RUN powershell -Command C:\Add-Font.ps1 C:\Fonts
 
-RUN powershell -Command choco install googlechrome -y
-RUN powershell -Command choco install chromedriver -y
-RUN powershell -Command choco install python -y
+RUN powershell -Command choco install -y googlechrome chromedriver ie 11 selenium-ie-driver python
 RUN pip install \
      --no-cache-dir \
      robotframework \
