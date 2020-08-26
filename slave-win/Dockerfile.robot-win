@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell -Command Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-RUN powershell -Command choco install -y googlechrome chromedriver ie11 selenium-ie-driver python
+RUN powershell -Command choco install -y googlechrome chromedriver python
 RUN pip install \
      --no-cache-dir \
      robotframework \
@@ -16,6 +16,3 @@ RUN pip install \
 
 ADD FontsToAdd.tar .
 RUN powershell -Command C:\Add-Font.ps1 C:\Fonts
-
-ADD ie-configuration.ps .
-RUN powershell -Command C:\ie-configuration.ps1
