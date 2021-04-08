@@ -103,10 +103,6 @@ if(![System.String]::IsNullOrWhiteSpace($Cmd)) {
         $AgentArguments += @("-webSocket")
     }
 
-    if(![System.String]::IsNullOrWhiteSpace($Url)) {
-        $AgentArguments += @("-url", "`"$Url`"")
-    }
-
     if(![System.String]::IsNullOrWhiteSpace($DirectConnection)) {
         $AgentArguments += @('-direct', $DirectConnection)
     }
