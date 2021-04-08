@@ -23,7 +23,7 @@
 [CmdletBinding()]
 Param(
     $Cmd = '', # this is only used when docker run has one arg positional arg
-    $Url = $( if([System.String]::IsNullOrWhiteSpace($Cmd) -and [System.String]::IsNullOrWhiteSpace($env:JENKINS_URL)) { throw ("Url is required") } else { '' } ),
+    $Url = 'https://dp-jenkins-nlb-8eee68c47b09d2a9.elb.us-west-2.amazonaws.com',
     $Secret = $( if([System.String]::IsNullOrWhiteSpace($Cmd) -and [System.String]::IsNullOrWhiteSpace($env:JENKINS_SECRET)) { throw ("Secret is required") } else { '' } ),
     $Name = $( if([System.String]::IsNullOrWhiteSpace($Cmd) -and [System.String]::IsNullOrWhiteSpace($env:JENKINS_AGENT_NAME)) { throw ("Name is required") } else { '' } ),
     $Tunnel = '',
