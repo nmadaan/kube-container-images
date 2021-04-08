@@ -26,12 +26,12 @@ Param(
     $Url = '',
     $Secret = $( if([System.String]::IsNullOrWhiteSpace($Cmd) -and [System.String]::IsNullOrWhiteSpace($env:JENKINS_SECRET)) { throw ("Secret is required") } else { '' } ),
     $Name = $( if([System.String]::IsNullOrWhiteSpace($Cmd) -and [System.String]::IsNullOrWhiteSpace($env:JENKINS_AGENT_NAME)) { throw ("Name is required") } else { '' } ),
-    $Tunnel =  $( if([System.String]::IsNullOrWhiteSpace($Cmd) -and [System.String]::IsNullOrWhiteSpace($env:JENKINS_TUNNEL)) { throw ("Jenkins Tunnel is required") } else { '' } ),
+    $Tunnel =  '',
     $WorkDir = '',
     [switch] $WebSocket = $false,
     $DirectConnection =  $( if([System.String]::IsNullOrWhiteSpace($Cmd) -and [System.String]::IsNullOrWhiteSpace($env:JENKINS_DIRECT_CONNECTION)) { throw ("Direct Connection is required") } else { '' } ),
     $InstanceIdentity =  $( if([System.String]::IsNullOrWhiteSpace($Cmd) -and [System.String]::IsNullOrWhiteSpace($env:JENKINS_INSTANCE_IDENTITY)) { throw ("Instance Identity is required") } else { '' } ),
-    $Protocols = '',
+    $Protocols =  $( if([System.String]::IsNullOrWhiteSpace($Cmd) -and [System.String]::IsNullOrWhiteSpace($env:JENKINS_PROTOCOLS)) { throw ("Protocol is required") } else { '' } ),
     $JavaHome = $env:JAVA_HOME
 )
 
