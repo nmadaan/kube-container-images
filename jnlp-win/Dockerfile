@@ -1,5 +1,5 @@
-ARG VERSION=4.3-8
-FROM jenkins/agent:4.3-8-jdk11-windowsservercore-1809
+ARG VERSION=4.3-4
+FROM jenkins/agent:${VERSION}-windowsservercore-1809
 LABEL Description="This is a base image, which allows connecting Jenkins agents via JNLP protocols on Windows" Vendor="Jenkins Project" Version="$VERSION"
 
 ARG user=jenkins
