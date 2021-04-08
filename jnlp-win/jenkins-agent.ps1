@@ -23,14 +23,14 @@
 [CmdletBinding()]
 Param(
     $Cmd = '', # this is only used when docker run has one arg positional arg
-    $Url = 'https://dp-jenkins-nlb-8eee68c47b09d2a9.elb.us-west-2.amazonaws.com',
+    $Url = '',
     $Secret = $( if([System.String]::IsNullOrWhiteSpace($Cmd) -and [System.String]::IsNullOrWhiteSpace($env:JENKINS_SECRET)) { throw ("Secret is required") } else { '' } ),
     $Name = $( if([System.String]::IsNullOrWhiteSpace($Cmd) -and [System.String]::IsNullOrWhiteSpace($env:JENKINS_AGENT_NAME)) { throw ("Name is required") } else { '' } ),
-    $Tunnel = '',
+    $Tunnel =  $( if([System.String]::IsNullOrWhiteSpace($Cmd) -and [System.String]::IsNullOrWhiteSpace($env:JENKINS_TUNNEL)) { throw ("Jenkins Tunnel is required") } else { '' } ),
     $WorkDir = '',
     [switch] $WebSocket = $false,
-    $DirectConnection = '',
-    $InstanceIdentity = '',
+    $DirectConnection =  $( if([System.String]::IsNullOrWhiteSpace($Cmd) -and [System.String]::IsNullOrWhiteSpace($env:JENKINS_DIRECT_CONNECTION)) { throw ("Direct Connection is required") } else { '' } ),
+    $InstanceIdentity =  $( if([System.String]::IsNullOrWhiteSpace($Cmd) -and [System.String]::IsNullOrWhiteSpace($env:JENKINS_INSTANCE_IDENTITY)) { throw ("Instance Identity is required") } else { '' } ),
     $Protocols = '',
     $JavaHome = $env:JAVA_HOME
 )
@@ -101,6 +101,10 @@ if(![System.String]::IsNullOrWhiteSpace($Cmd)) {
 
     if($WebSocket) {
         $AgentArguments += @("-webSocket")
+    }
+
+    if(![System.String]::IsNullOrWhiteSpace($Url)) {
+        $AgentArguments += @("-url", "`"$Url`"")
     }
 
     if(![System.String]::IsNullOrWhiteSpace($DirectConnection)) {
