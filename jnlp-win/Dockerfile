@@ -8,4 +8,4 @@ RUN $output = net users ; if(-not ($output -match $env:user)) { Write-Host 'user
 
 COPY jenkins-agent.ps1 C:/ProgramData/Jenkins
 USER ${user}
-ENTRYPOINT ["pwsh.exe", "-f", "C:/ProgramData/Jenkins/jenkins-agent.ps1 -Url https://dp-jenkins-nlb-72ad43dd52c72fb8.elb.us-west-2.amazonaws.com -Secret 119fecfce7c7e3de10ece6e3a9c5c03d31 -Name Jnlp-Win"]
+ENTRYPOINT powershell -command "C:/ProgramData/Jenkins/jenkins-agent.ps1 -Url https://dp-jenkins-nlb-8eee68c47b09d2a9.elb.us-west-2.amazonaws.com -Secret 11a817f804211ece41f0500623a682005c -Name Jnlp-Win"
