@@ -3,20 +3,20 @@ Library     Selenium2Library
 
 *** Test Cases ***
 Open Google Chrome
-    Open Browser     http://google.com    Chrome
+    Open Browser     https://github.com    Chrome
     Capture Page Screenshot
     ${title}=       Get Title
-    Should Be Equal    Google    ${title}
+    Should Be Equal    Github    ${title}
     Capture Page Screenshot
     Close Browser
     [Teardown]
     
 Open Google Chrome Option
     Open Chrome Browser
-    GoTo    http://google.com
+    GoTo    https://github.com
     Capture Page Screenshot
     ${title}=       Get Title
-    Should Be Equal    Google    ${title}
+    Should Be Equal    Github    ${title}
     Capture Page Screenshot
     Close Browser
     
