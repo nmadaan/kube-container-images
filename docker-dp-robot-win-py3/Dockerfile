@@ -13,3 +13,5 @@ RUN pip3 install --ignore-installed distlib  -r requirements_py.txt
 ADD FontsToAdd.tar .
 
 RUN powershell -Command C:\Add-Font.ps1 C:\Fonts
+
+RUN powershell -Command Start-Process -FilePath 'C:\Program Files\Google\Chrome\Application\chrome.exe'
