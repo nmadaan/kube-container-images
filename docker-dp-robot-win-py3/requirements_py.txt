@@ -16,4 +16,4 @@ autoit
 PyAutoIt
 robotframework-jsonlibrary
 robotframework-faker
-robotframework-autoit
+robotframework-autoitlibrary
