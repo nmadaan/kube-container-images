@@ -4,6 +4,8 @@ RUN powershell -Command Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((
 
 RUN powershell -Command choco install -y googlechrome chromedriver python
 
+RUN setx HOMEDRIVE "C:"
+
 COPY requirements_py.txt .
 
 RUN pip3 install --ignore-installed distlib  -r requirements_py.txt
