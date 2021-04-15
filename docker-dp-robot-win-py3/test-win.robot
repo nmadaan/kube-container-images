@@ -6,7 +6,7 @@ Open Google Chrome
     Open Browser     https://github-scm.spe.sony.com    Chrome
     Capture Page Screenshot
     ${title}=       Get Title
-    Should Be Equal    Github    ${title}
+    Should Be Equal    "Sign in via LDAP · GitHub"    ${title}
     Capture Page Screenshot
     Close Browser
     [Teardown]
@@ -16,7 +16,7 @@ Open Google Chrome Option
     GoTo    https://github-scm.spe.sony.com
     Capture Page Screenshot
     ${title}=       Get Title
-    Should Be Equal    Github    ${title}
+    Should Be Equal    "Sign in via LDAP · GitHub"    ${title}
     Capture Page Screenshot
     Close Browser
     
