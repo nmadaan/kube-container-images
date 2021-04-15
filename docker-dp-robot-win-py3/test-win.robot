@@ -3,7 +3,7 @@ Library     Selenium2Library
 
 *** Test Cases ***
 Open Google Chrome
-    Open Browser     https://github.com    Chrome
+    Open Browser     https://github-scm.spe.sony.com    Chrome
     Capture Page Screenshot
     ${title}=       Get Title
     Should Be Equal    Github    ${title}
@@ -13,7 +13,7 @@ Open Google Chrome
     
 Open Google Chrome Option
     Open Chrome Browser
-    GoTo    https://github.com
+    GoTo    https://github-scm.spe.sony.com
     Capture Page Screenshot
     ${title}=       Get Title
     Should Be Equal    Github    ${title}
