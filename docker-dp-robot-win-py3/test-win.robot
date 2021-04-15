@@ -3,7 +3,7 @@ Library     Selenium2Library
 
 *** Test Cases ***
 Open Google Chrome
-    Open Browser     http://google.com    Chrome
+    Open Browser     http://google.com    Chrome    options=add_argument("--no-sandbox")
     Capture Page Screenshot
     ${title}=       Get Title
     Should Be Equal    Google    ${title}
