@@ -13,10 +13,10 @@ Open Google Chrome
     
 Open Google Chrome Option
     Open Chrome Browser
-    GoTo    https://github-scm.spe.sony.com
+    GoTo    https://google.com
     Capture Page Screenshot
     ${title}=       Get Title
-    Should Be Equal    Sign in via LDAP · GitHub    ${title}
+    Should Be Equal    Google    ${title}
     Capture Page Screenshot
     Close Browser
     
